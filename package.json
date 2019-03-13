@@ -1,0 +1,22 @@
+{
+  "name": "signalk-minimalvesseldata-plugin",
+  "version": "1.0.0",
+  "description": "providing one endpoint for retrieving a minimal response with relevant vessel data of self",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beat843796/signalk-minimalvesseldata-plugin.git"
+  },
+  "keywords": [
+    "signalk-node-server-plugin"
+  ],
+  "author": "beat84@me.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beat843796/signalk-minimalvesseldata-plugin/issues"
+  },
+  "homepage": "https://github.com/beat843796/signalk-minimalvesseldata-plugin#readme"
+}
