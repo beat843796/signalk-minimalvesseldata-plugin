@@ -16,11 +16,13 @@
 
 module.exports = function(app) {
   const plugin = {}
-  
-
-
+  var values
+  var vesselData = []
   plugin.start = function(props) {
 
+    values = props.items
+
+    
 
   }
 
@@ -31,9 +33,56 @@ module.exports = function(app) {
   }
 
   plugin.registerWithRouter = function(router) {
-    router.gett("/vesseldata", (req, res) => {
+    router.get("/vesseldata", (req, res) => {
+
+
       
-        res.send("Hello World")
+        var speedThroughWater = app.getSelfPath("navigation.speedThroughWater.value")
+        var trip = app.getSelfPath("navigation.trip.value")
+        var log = app.getSelfPath("navigation.log.value")
+        var speedOverGround = app.getSelfPath("navigation.speedOverGround.value")
+        var courseOverGroundTrue = app.getSelfPath("navigation.courseOverGroundTrue.value")
+        var headingTrue = app.getSelfPath("navigation.headingTrue.value")
+        var magneticVariation = app.getSelfPath("navigation.magneticVariation.value")
+        var waterTemperature = app.getSelfPath("environment.water.temperature.value")
+        var windSpeedTrue = app.getSelfPath("environment.wind.speedTrue.value")
+        var windSpeedApparent = app.getSelfPath("environment.wind.speedApparent.value")
+        var windAngleApparent = app.getSelfPath("environment.wind.angleApparent.value")
+        var depthBelowTransducer = app.getSelfPath("environment.depth.belowTransducer.value")
+        var depthTransducerToKeel = app.getSelfPath("environment.depth.transducerToKeel.value")
+        var depthBelowKeel = app.getSelfPath("environment.depth.belowKeel.value")
+        var rudderAngle = app.getSelfPath("steering.rudderAngle.value")
+        var autopilotTargetWindAngleApparent = app.getSelfPath("steering.autopilot.target.windAngleApparent.value")
+        var autopilotTargetHeadingTrue = app.getSelfPath("steering.autopilot.target.headingTrue.value")
+        var autopilotTargetHeadingMagnetic = app.getSelfPath("steering.autopilot.target.headingMagnetic.value")
+        var autopilotState = app.getSelfPath("steering.autopilot.state.value")
+
+        var nothere = app.getSelfPath("steering.autopilotasdasd.state.value")
+
+        var vesseldata = {
+          "speedThroughWater" : speedThroughWater,
+          "trip" : trip,
+          "log" : log,
+          "speedOverGround" : speedOverGround,
+          "courseOverGroundTrue" : courseOverGroundTrue,
+          "headingTrue" : headingTrue,
+          "magneticVariation" : magneticVariation,
+          "waterTemperature" : waterTemperature,
+          "windSpeedApparent" : windSpeedApparent,
+          "windAngleApparent" : windAngleApparent,
+          "depthBelowTransducer" : depthBelowTransducer,
+          "depthTransducerToKeel" : depthTransducerToKeel,
+          "depthBelowKeel" : depthBelowKeel,
+          "rudderAngle" : rudderAngle,
+          "autopilotTargetWindAngleApparent" : autopilotTargetWindAngleApparent,
+          "autopilotTargetHeadingTrue" : autopilotTargetHeadingTrue,
+          "autopilotTargetHeadingMagnetic" : autopilotTargetHeadingMagnetic,
+          "autopilotState" : autopilotState,
+          "windSpeedTrue" : windSpeedTrue
+        }
+
+
+        res.send(vesseldata)
       
     })
   } 
@@ -44,26 +93,10 @@ module.exports = function(app) {
 
 
   plugin.schema = {
-    "title": "Simulator",
+    "title": "Provide path to value and keyname for response",
     "type": "object",
-    "items": {
-      type: "array",
-      items: {
-        type: "object",
-        properties:
-        {
-          pathToValue: {
-            type: "string",
-            title: "Path to value",
-            default: "environment.wind.angleApparent.value"
-          },
-          keyInResponse: {
-            type: "string",
-            title: "Name for key in response",
-            default: "windAngleApparent"
-          }
-        }
-      }
+    "properties": {
+      
     }
   }
 
@@ -71,37 +104,6 @@ module.exports = function(app) {
 }
 
 
-function createStateDelta(state)
-{
-
-  var delta = {
-        updates: [
-          {
-            "$source": "apsimulator",
-            values: [
-              {
-                path: "steering.autopilot.state",
-                value: state
-              },
-              {
-                path: "steering.autopilot.target.windAngleApparent",
-                value: 0.0
-              },
-              {
-                path: "steering.autopilot.target.headingTrue",
-                value: 0.0
-              },
-              {
-                path: "steering.autopilot.target.headingMagnetic",
-                value: 0.0
-              }
-            ]
-          }
-        ]
-      }
-
-  return delta
-}
 
 
 
