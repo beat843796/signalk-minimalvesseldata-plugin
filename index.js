@@ -57,7 +57,7 @@ module.exports = function(app) {
         var autopilotTargetHeadingMagnetic = app.getSelfPath("steering.autopilot.target.headingMagnetic.value")
         var autopilotState = app.getSelfPath("steering.autopilot.state.value")
 
-        var nothere = app.getSelfPath("steering.autopilotasdasd.state.value")
+       
 
         var vesseldata = {
           "speedThroughWater" : speedThroughWater,
