@@ -3,9 +3,9 @@ Provides an endpoint for retrieving vessel data in a minimalistic response to sa
 
 ## Endpoint
 
-GET plugins/minimumvesseldatarest/vesseldata
+### GET plugins/minimumvesseldatarest/vesseldata
 
-Make sure you have set a valid authentication token ("JWT asdsadaskld.....").
+Make sure you have set a valid Authorization token ("JWT asdsadaskld.....") in http request header
 
 Response with provided data:
 
