@@ -42,7 +42,7 @@ module.exports = function(app) {
         var log = app.getSelfPath("navigation.log.value")
         var speedOverGround = app.getSelfPath("navigation.speedOverGround.value")
         var courseOverGroundTrue = app.getSelfPath("navigation.courseOverGroundTrue.value")
-        var headingTrue = app.getSelfPath("navigation.headingTrue.value")
+        var headingMagnetic = app.getSelfPath("navigation.headingMagnetic.value")
         var magneticVariation = app.getSelfPath("navigation.magneticVariation.value")
         var waterTemperature = app.getSelfPath("environment.water.temperature.value")
         var windSpeedTrue = app.getSelfPath("environment.wind.speedTrue.value")
@@ -56,6 +56,8 @@ module.exports = function(app) {
         var autopilotTargetHeadingTrue = app.getSelfPath("steering.autopilot.target.headingTrue.value")
         var autopilotTargetHeadingMagnetic = app.getSelfPath("steering.autopilot.target.headingMagnetic.value")
         var autopilotState = app.getSelfPath("steering.autopilot.state.value")
+        var tripTotal = app.getSelfPath("navigation.log.value")
+        
 
        
 
@@ -65,7 +67,7 @@ module.exports = function(app) {
           "log" : log,
           "speedOverGround" : speedOverGround,
           "courseOverGroundTrue" : courseOverGroundTrue,
-          "headingTrue" : headingTrue,
+          "headingMagnetic" : headingMagnetic,
           "magneticVariation" : magneticVariation,
           "waterTemperature" : waterTemperature,
           "windSpeedApparent" : windSpeedApparent,
@@ -78,7 +80,8 @@ module.exports = function(app) {
           "autopilotTargetHeadingTrue" : autopilotTargetHeadingTrue,
           "autopilotTargetHeadingMagnetic" : autopilotTargetHeadingMagnetic,
           "autopilotState" : autopilotState,
-          "windSpeedTrue" : windSpeedTrue
+          "windSpeedTrue" : windSpeedTrue,
+          "tripTotal" : tripTotal
         }
 
 
